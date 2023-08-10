@@ -1,6 +1,6 @@
 {
   "name": "@artfuldev/coerce",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Force retrieval of a promised value when possible",
   "main": "dist/index.js",
   "scripts": {
