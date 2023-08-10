@@ -2,8 +2,8 @@ import { expect } from "chai";
 import { coerce } from ".";
 
 describe("coerce", () => {
-  context("given a matcher", () => {
-    const match = coerce(
+  context("given a coercion", () => {
+    const status = coerce(
       () => "pending",
       (result) => `resolved: ${result}`,
       (reason) => `rejected: ${reason.message}`
@@ -19,12 +19,12 @@ describe("coerce", () => {
           );
 
         it("should return the pending match", async () => {
-          expect(await match(rejects())).to.equal("pending");
+          expect(await status(rejects())).to.equal("pending");
         });
 
         it("should not wait for the promise to settle", async () => {
           const started = Date.now();
-          await match(rejects());
+          await status(rejects());
           const ended = Date.now();
           const elapsed = ended - started;
           expect(elapsed).to.be.lessThan(delay);
@@ -36,12 +36,12 @@ describe("coerce", () => {
           new Promise<number>((resolve) => setTimeout(() => resolve(1), delay));
 
         it("should return the pending match", async () => {
-          expect(await match(resolves())).to.equal("pending");
+          expect(await status(resolves())).to.equal("pending");
         });
 
         it("should not wait for the promise to settle", async () => {
           const started = Date.now();
-          await match(resolves());
+          await status(resolves());
           const ended = Date.now();
           const elapsed = ended - started;
           expect(elapsed).to.be.lessThan(delay);
@@ -54,7 +54,7 @@ describe("coerce", () => {
       const resolved = () => Promise.resolve(value);
 
       it("should return the resolved match", async () => {
-        expect(await match(resolved())).to.equal(`resolved: ${value}`);
+        expect(await status(resolved())).to.equal(`resolved: ${value}`);
       });
     });
 
@@ -63,7 +63,7 @@ describe("coerce", () => {
       const rejected = () => Promise.reject(new Error(message));
 
       it("should return the rejected match", async () => {
-        expect(await match(rejected())).to.equal(`rejected: ${message}`);
+        expect(await status(rejected())).to.equal(`rejected: ${message}`);
       });
     });
   });

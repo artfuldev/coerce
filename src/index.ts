@@ -6,8 +6,8 @@ export const coerce =
     resolved: (result: T) => A,
     rejected: (reason: R) => A
   ) =>
-  (value: Promise<T>): Promise<A> =>
-    Promise.race([value, Pending]).then(
+  (promise: Promise<T>): Promise<A> =>
+    Promise.race([promise, Pending]).then(
       (result) => (result === Pending ? pending() : resolved(result as T)),
       rejected
     );

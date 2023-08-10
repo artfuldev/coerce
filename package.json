@@ -1,7 +1,7 @@
 {
   "name": "@artfuldev/coerce",
-  "version": "2.0.1",
-  "description": "Force retrieval of a promised value when possible",
+  "version": "2.0.2",
+  "description": "Force a value out of a promise",
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*.spec.ts",

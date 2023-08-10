@@ -1,2 +1,2 @@
 # coerce
-Forces what is promised when possible
+Force a value out of a promise
