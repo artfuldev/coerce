@@ -1,0 +1,35 @@
+{
+  "name": "@artfuldev/coerce",
+  "version": "1.0.0",
+  "description": "Force retrieval of a promised value when possible",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "prepack": "npm run test && rm -rf dist && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artfuldev/coerce.git"
+  },
+  "keywords": [
+    "promise",
+    "status",
+    "coerce",
+    "force",
+    "async"
+  ],
+  "author": "Sudarsan Balaji <hello@artful.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/artfuldev/coerce/issues"
+  },
+  "homepage": "https://github.com/artfuldev/coerce#readme",
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}
