@@ -12,15 +12,15 @@ const rejected = <B = Error>(reason: B): Rejected<B> => [Rejected, reason];
 
 const Coerced = Symbol("coerced");
 
-export type Coerced<A, R = Error> = {
-  [Coerced]: Pending | Resolved<A> | Rejected<R>;
+export type Coerced<T, R = Error> = {
+  [Coerced]: Pending | Resolved<T> | Rejected<R>;
 };
 
-export const coerce = <A, R = Error>(
-  value: Promise<A>
-): Promise<Coerced<A, R>> =>
+export const coerce = <T, R = Error>(
+  value: Promise<T>
+): Promise<Coerced<T, R>> =>
   Promise.race([value, pending])
-    .then((result) => (result === pending ? pending : resolved(result as A)))
+    .then((result) => (result === pending ? pending : resolved(result as T)))
     .catch(rejected)
     .then((coerced) => ({ [Coerced]: coerced }));
 
