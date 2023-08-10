@@ -13,10 +13,10 @@ describe("coerce", () => {
           )
         );
 
-      context("and a promise", () => {
+      context("and a promise that eventually", () => {
         const delay = 1000;
 
-        context("that eventually rejects", () => {
+        context("rejects", () => {
           const rejects = () =>
             new Promise<number>((_, reject) =>
               setTimeout(() => reject(new Error()), delay)
@@ -35,7 +35,7 @@ describe("coerce", () => {
           });
         });
 
-        context("that eventually resolves", () => {
+        context("resolves", () => {
           const resolves = () =>
             new Promise<number>((resolve) =>
               setTimeout(() => resolve(1), delay)
