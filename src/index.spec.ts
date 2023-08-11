@@ -5,7 +5,7 @@ describe("coerce", () => {
   context("given a coercion", () => {
     const status = coerce(
       () => "pending",
-      (result) => `resolved: ${result}`,
+      (result: number) => `resolved: ${result}`,
       (reason) => `rejected: ${reason.message}`
     );
 
