@@ -1,6 +1,6 @@
 {
   "name": "@artfuldev/coerce",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Force a value out of a promise",
   "main": "dist/index.js",
   "scripts": {
