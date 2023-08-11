@@ -1,7 +1,7 @@
 const Pending = Symbol("pending");
 
 export const coerce =
-  <T, A, R = Error>(
+  <A, T, R = Error>(
     pending: () => A,
     resolved: (result: T) => A,
     rejected: (reason: R) => A
